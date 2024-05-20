@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pokédex</title>
+  <style>
+    body {
+      background-image: url('campo.jpg');
+      background-size: cover;
+      text-align: center;
+    }
+
+    button {
+      text-align: left;
+      border-radius: 15px;
+      background-color: brown;
+      border-color: aliceblue;
+      color: white;
+      padding: 10px 20px;
+      margin: 10px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: darkred;
+    }
+
+    img {
+      display: block;
+      margin: 20px auto;
+      border-radius: 15px;
+    }
+
+    .pokemon-info {
+      background-color: white;
+      border-radius: 15px;
+      display: inline-block;
+      padding: 20px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <img id="pokemonImage" src="img/ON.gif" alt="Pokédex" width="200px" height="200px">
+  <button onclick="showPokemon('pikachu')">Pikachu</button>
+  <button onclick="showPokemon('squirtle')">Squirtle</button>
+  <button onclick="showPokemon('charmander')">Charmander</button>
+
+  <div id="pokemonInfo" class="pokemon-info" style="display: none;">
+    <h2 id="pokemonName"></h2>
+    <p id="pokemonAbilities"></p>
+  </div>
+
+  <script>
+    const pokemonData = {
+      "pikachu": {
+        "name": "Pikachu",
+        "image": "pikachu.jpg",
+        "abilities": "Static, Lightning Rod"
+      },
+      "squirtle": {
+        "name": "Squirtle",
+        "image": "squirtle.jpg",
+        "abilities": "Torrent, Rain Dish"
+      },
+      "charmander": {
+        "name": "Charmander",
+        "image": "charmander.jpg",
+        "abilities": "Blaze, Solar Power"
+      }
+    };
+
+    function showPokemon(pokemon) {
+      const data = pokemonData[pokemon];
+      if (data) {
+        document.getElementById('pokemonImage').src = 'img/' + data.image;
+        document.getElementById('pokemonName').innerText = data.name;
+        document.getElementById('pokemonAbilities').innerText = "Abilities: " + data.abilities;
+        document.getElementById('pokemonInfo').style.display = 'block';
+      } else {
+        alert('Pokémon not found!');
+      }
+    }
+  </script>
+</body>
+
+</html>
